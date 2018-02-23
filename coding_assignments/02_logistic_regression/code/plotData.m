@@ -12,10 +12,12 @@ figure; hold on;
 %               examples and 'ko' for the negative examples.
 %
 
+sz = 70;
+score1 = X(:,1);
+score2 = X(:,2);
 
-
-
-
+scatter(score1(y == 1), score2(y == 1), sz, 'k+', 'LineWidth', 2)
+scatter(score1(y == 0), score2(y == 0), sz, 'ko', 'MarkerFaceColor', 'y', 'LineWidth', 1)
 
 
 
