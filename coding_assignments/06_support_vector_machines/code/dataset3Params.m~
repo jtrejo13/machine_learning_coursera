@@ -32,15 +32,17 @@ Csigma = reshape(cat(2,A',B'),[],2);
 min_error = Inf;
 
 for i = 1:length(Csigma)
-    model  = svmTrain(X,y,Csigma(i, 1), @(x1, x2) gaussianKernel(x1, x2, Csigma(i, 2)));
+    model  = svmTrain(X,Y,Csigma(i, 1), @(x1, x2) gaussianKernel(x1, x2, Csigma(i, 2)));
     pred   = svmPredict(model, Xval);
-    error  = mean(double(pred ~= yval));
+    error  = mean(double(pred ~= Yval));
     if error < min_error
-        min_error = error;
-        C = Csigma(i, 1);
-        sigma = Csigma(i, 2);
-    end
+        min_error = error
+        C = C
 end
+
+
+
+
 
 % =========================================================================
 
